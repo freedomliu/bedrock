@@ -1,11 +1,13 @@
 package freedom.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.activemq.transaction.Synchronization;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +19,7 @@ import freedom.beans.UserBean;
 import freedom.common.aop.BaseController;
 import freedom.common.aop.SysVariable;
 import freedom.common.util.CreateImageCode;
+import freedom.dao.ISysManageMapper;
 
 /**
  * 登陆相关
@@ -27,6 +30,7 @@ import freedom.common.util.CreateImageCode;
 /*@RequestMapping("/login")*/
 public class Login extends BaseController
 {
+	@Autowired ISysManageMapper sysmanage;
 	/**
 	 * 获取验证码
 	 * @param request
@@ -48,23 +52,14 @@ public class Login extends BaseController
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request)
 	{
+		
+		List<String> x= sysmanage.selectCity("111");
 		Object msg= request.getSession().getAttribute(SysVariable.MSG);
 		if(msg!=null)
 		{
 			request.setAttribute(SysVariable.MSG, msg);
 			request.getSession().removeAttribute(SysVariable.MSG);
 		}
-		/**************************/
-		String id= request.getParameter("id");
-		synchronized(id)
-		{
-			System.out.println(request.getParameter("id1"));
-			System.out.println(request.getParameter("id1"));
-			System.out.println(request.getParameter("id1"));
-			System.out.println(request.getParameter("id1"));
-			System.out.println(request.getParameter("id1"));
-		}
-		/**************************/
 		return "index";
 	}
 	

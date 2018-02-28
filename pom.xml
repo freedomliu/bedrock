@@ -8,7 +8,7 @@
 	<url>http://maven.apache.org</url>
  <properties>
 		<!-- spring版本号 -->
-		<spring.version>4.0.2.RELEASE</spring.version>
+		<spring.version>4.3.14.RELEASE</spring.version>
 		<!-- mybatis版本号 -->
 		<mybatis.version>3.2.6</mybatis.version>
 		<!-- log4j日志文件管理包版本 -->
@@ -31,15 +31,12 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- spring核心包 -->
-		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-core</artifactId> 
-			<version>${spring.version}</version> </dependency> -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
-		<dependency>
+		<dependency> 
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>4.2.5.RELEASE</version>
+			<artifactId>spring-core</artifactId> 
+			<version>${spring.version}</version> 
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -195,6 +192,18 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-pool</artifactId>
 			<version>5.14.5</version>
+		</dependency>
+		
+		<!-- 解决mappingJacksonHttpMessageConverter报错 -->
+		<dependency>
+		   <groupId>com.fasterxml.jackson.core</groupId>
+		   <artifactId>jackson-core</artifactId>
+		   <version>2.5.1</version>
+		</dependency>
+		<dependency>
+		   <groupId>com.fasterxml.jackson.core</groupId>
+		   <artifactId>jackson-databind</artifactId>
+		   <version>2.5.1</version>
 		</dependency>
 	</dependencies>
 </project>
