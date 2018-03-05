@@ -8,9 +8,7 @@
                         http://www.springframework.org/schema/context    
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd    
                         http://www.springframework.org/schema/mvc    
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
-    <!-- 自动扫描 -->  
-    <context:component-scan base-package="freedom" />  
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">  
     <!-- 引入配置文件 -->  
     <bean id="propertyConfigurer"  
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
@@ -39,12 +37,12 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dataSource" />  
         <!-- 自动扫描mapping.xml文件 -->  
-        <property name="mapperLocations" value="classpath:freedom/mapping/*.xml"></property>  
+        <property name="mapperLocations" value="classpath:com/bedrock/mapping/*.xml"></property>  
     </bean>  
   
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
-        <property name="basePackage" value="freedom.dao" />  
+        <property name="basePackage" value="com.bedrock.dao" />  
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean>  
   
@@ -55,6 +53,6 @@
     </bean>  
   
   	<!-- 异常处理 -->
-  	<bean id="exceptionResolver" class="freedom.common.aop.ExceptionHandler"/>
+  	<bean id="exceptionResolver" class="com.bedrock.common.ExceptionHandler"/>
 
 </beans>  

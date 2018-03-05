@@ -1,4 +1,4 @@
-package freedom.common.aop;
+package com.bedrock.common;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,13 +16,8 @@ public class CommonInterceptor implements HandlerInterceptor {
 	// 拦截前处理
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object obj) throws Exception {
-		
-		Object sessionObj = request.getSession().getAttribute(SysVariable.USERSESSION);
-		if (sessionObj != null) {
-			return true;
-		}
-		response.sendRedirect(request.getContextPath()+"/login");
-		return false;
+
+		return true;
 	}
 
 	// 拦截后处理
