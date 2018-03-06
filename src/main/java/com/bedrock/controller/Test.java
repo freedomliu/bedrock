@@ -12,12 +12,23 @@ import com.bedrock.common.FreemarkerHelper;
 @Controller
 public class Test
 {
-	@RequestMapping("/login.do")
+	@GetMapping("/index.html")
+	public ModelAndView test(HttpServletRequest request,ModelAndView mv)
+	{
+		request.getSession().setAttribute("sessionname", "lxt---------------->");
+		request.setAttribute("test", "index0");
+		request.getSession().setAttribute("test1", "index0");
+		mv.addObject("test", "index0");
+		mv.addObject("helper",new FreemarkerHelper());
+		mv.setViewName("NewFile");
+		return mv;
+	}
+	@GetMapping("/index1.html")
 	public ModelAndView test1(HttpServletRequest request,ModelAndView mv)
 	{
-		request.setAttribute("test", "胜多负少的12");
-		request.getSession().setAttribute("test1", "11134dfdfdfdfd");
-		mv.addObject("test", "对方答复12");
+		request.setAttribute("test", "index1");
+		request.getSession().setAttribute("test1", "index1");
+		mv.addObject("test", "index1");
 		mv.addObject("helper",new FreemarkerHelper());
 		mv.setViewName("NewFile");
 		return mv;
