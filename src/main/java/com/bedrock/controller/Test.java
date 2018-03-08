@@ -15,8 +15,8 @@ public class Test
 	@GetMapping("/index.html")
 	public ModelAndView test(HttpServletRequest request,ModelAndView mv)
 	{
-		request.getSession().setAttribute("sessionname", "lxt---------------->");
-		request.getSession().setAttribute("test1", "index0");
+		request.getSession().setAttribute("sessionname1", "lxt---------------->1");
+		request.getSession().setAttribute("sessionname2", "lxt---------------->2");
 
 		mv.addObject("helper",new FreemarkerHelper());
 		mv.setViewName("NewFile");
@@ -25,8 +25,8 @@ public class Test
 	@GetMapping("/index1.html")
 	public ModelAndView test1(HttpServletRequest request,ModelAndView mv)
 	{
-	 	String sessionname= request.getSession().getAttribute("sessionname")+"";
-		String test1= request.getSession().getAttribute("test1")+"";
+	 	String sessionname= request.getSession().getAttribute("sessionname1")+"";
+		String test1= request.getSession().getAttribute("sessionname2")+"";
 		System.out.println(sessionname);
 		System.out.println(test1);
 		mv.addObject("sessionname",sessionname);
