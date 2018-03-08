@@ -40,7 +40,10 @@
     <logger name="java.sql.ResultSet" additivity="true">  
         <level value="ERROR" />  
     </logger>  
-  
+    <!-- 屏蔽 -->
+	<logger name="org.springframework.scheduling">
+	    <level value="info" />
+	</logger>
     <root>  
         <level value="DEBUG" />  
         <appender-ref ref="CONSOLE" />  
