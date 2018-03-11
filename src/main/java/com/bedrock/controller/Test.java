@@ -17,7 +17,6 @@ public class Test
 	{
 		request.getSession().setAttribute("sessionname1", "lxt---------------->1");
 		request.getSession().setAttribute("sessionname2", "lxt---------------->2");
-
 		mv.addObject("helper",new FreemarkerHelper());
 		mv.setViewName("NewFile");
 		return mv;
