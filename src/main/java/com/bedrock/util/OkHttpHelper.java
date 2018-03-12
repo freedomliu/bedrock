@@ -20,6 +20,7 @@ import okhttp3.Response;
 import okio.BufferedSink;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bedrock.common.OkHttpRequestBody;
 import com.bedrock.constant.CodeType;
 
 /**
@@ -232,20 +233,7 @@ public class OkHttpHelper
 	 */
 	public static JSONObject postStream(String url,String str,Callback...callbacks) throws IOException
 	{
-		MediaType MEDIA_TYPE_MARKDOWN= MediaType.parse("text/x-markdown; charset=utf-8");
-		RequestBody requestBody = new RequestBody() {
-		      @Override 
-		      public MediaType contentType() 
-		      {
-		        return MEDIA_TYPE_MARKDOWN;
-		      }
-
-		      @Override 
-		      public void writeTo(BufferedSink sink) throws IOException 
-		      {
-		        sink.writeUtf8(str);
-		      }
-		    };
+		RequestBody requestBody = new OkHttpRequestBody(str);
 	    Request request = new Request.Builder().url(url).post(requestBody).build();
 	    return executeP(url, request, callbacks);
 	}
