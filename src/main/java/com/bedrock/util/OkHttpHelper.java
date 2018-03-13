@@ -17,7 +17,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okio.BufferedSink;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bedrock.common.OkHttpRequestBody;
