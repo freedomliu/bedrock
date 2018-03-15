@@ -258,17 +258,21 @@ public class OkHttpHelper
 	
 	private static JSONObject executeP(String url,Request request,Callback ...callbacks) throws IOException
 	{		
+		JSONObject jo=null;
 		OkHttpClient client = new OkHttpClient();
 		if(callbacks.length!=0)
 		{
 			client.newCall(request).enqueue(callbacks[0]);
-			return null;
 		}
-		try (Response response = client.newCall(request).execute())
+		else
 		{
-			if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-			String bodyStr=response.body().string();
-			return (JSONObject) JSONObject.parseObject(bodyStr);
+			try (Response response = client.newCall(request).execute())
+			{
+				if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+				String bodyStr=response.body().string();
+				jo= (JSONObject) JSONObject.parseObject(bodyStr);
+			}
 		}
+		return jo;
 	}
 }
